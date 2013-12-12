@@ -1,28 +1,28 @@
 class Dictionary
-	def word_list
-		File.open('/usr/share/dict/words')
-	end
+  def word_list
+    File.open('/usr/share/dict/words')
+  end
 
-	def words
-		word_list.to_a.map { |word| word.chomp }
-	end
+  def words
+    word_list.to_a.map { |word| word.chomp }
+  end
 
-	# not currently relevant
-	# def long_words(num=5)
-	# 	word_list.sort_by(&:length).reverse.take(num)
-	# end
+  # not currently relevant
+  # def long_words(num=5)
+  #   word_list.sort_by(&:length).reverse.take(num)
+  # end
 
-	def check_name
-		puts "Hello. What is your first name?"
-		gets.chomp.downcase
-	end
+  def check_name
+    puts "Hello. What is your first name?"
+    gets.chomp.downcase
+  end
 
-	def words_that_match(name)
-		result = words.keep_if { |word| word.include?(name) }
+  def words_that_match(name)
+    result = words.keep_if { |word| word.include?(name) }
 
-		puts "Your name can be found in #{result.length} words in our current dictionary."
-		p result
-	end
+    puts "Your name can be found in #{result.length} words in our current dictionary."
+    p result
+  end
 end
 
 dict = Dictionary.new
@@ -41,21 +41,21 @@ dict.words_that_match(name)
 
 # Refactoring to make this more expressive. This was the code before.
 # class Dictionary
-# 	def word_list
-# 		File.open('/usr/share/dict/words')
-# 	end
+#   def word_list
+#     File.open('/usr/share/dict/words')
+#   end
 
-# 	def long_words(num=5)
-# 		word_list.sort_by(&:length).reverse.take(num)
-# 	end
+#   def long_words(num=5)
+#     word_list.sort_by(&:length).reverse.take(num)
+#   end
 
-# 	def check_name
-# 		puts "Hello. What is your first name?"
-# 		name   = gets.chomp.downcase
-# 		words  = Dictionary.new.word_list.to_a.map { |word| word.chomp }
-# 		result = words.keep_if { |word| word.include?(name) }
+#   def check_name
+#     puts "Hello. What is your first name?"
+#     name   = gets.chomp.downcase
+#     words  = Dictionary.new.word_list.to_a.map { |word| word.chomp }
+#     result = words.keep_if { |word| word.include?(name) }
 
-# 		puts "Your name matches #{result.length} words in our current dictionary."
-# 		p result
-# 	end
+#     puts "Your name matches #{result.length} words in our current dictionary."
+#     p result
+#   end
 # end
